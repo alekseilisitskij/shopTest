@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Хлеб бородинский",
+      "price": 100,
+      "description": "500 г",
+      "image": "🍞",
+      "category": "eats"
+    },
+    {
+      "id": 2,
+      "title": "Молоко",
+      "price": 75,
+      "description": "1 л",
+      "image": "🥛",
+      "category": "eats"
+    },
+    {
+      "id": 3,
+      "title": "Сыр российский",
+      "price": 145,
+      "description": "245г",
+      "weight": 300,
+      "image": "🧀",
+      "category": "eats"
+    },
+    {
+      "id": 4,
+      "title": "Сыр российский",
+      "price": 145,
+      "description": "245г",
+      "weight": 300,
+      "image": "🧀",
+      "category": "eats"
+    },
+    {
+      "id": 5,
+      "title": "Джинсы Slim Fit",
+      "price": 4990,
+      "description": "Tommy Hilfiger",
+      "image": "👕",
+      "category": "clothes"
+    },
+    {
+      "id": 6,
+      "title": "Кроссовки Air Max",
+      "price": 12990,
+      "description": "Nike",
+      "image": "👟",
+      "category": "clothes"
+    },
+    {
+      "id": 7,
+      "title": "Куртка зимняя",
+      "price": 7326,
+      "description": "The North Face",
+      "image": "🧥",
+      "category": "clothes"
+    },
+    {
+      "id": 8,
+      "title": "Кроссовки Air Max",
+      "price": 12990,
+      "description": "Nike",
+      "image": "👟",
+      "category": "clothes"
+    },
+    {
+      "id": 9,
+      "title": "MacBook Air M2",
+      "price": 119990,
+      "description": "13, 256GB, Silve,",
+      "image": "💻",
+      "category": "electronics"
+    },
+    {
+      "id": 10,
+      "title": "iPhone 15 Pro",
+      "price": 89990,
+      "description": "128GB Titanium",
+      "image": "📱",
+      "category": "electronics"
+    },
+    {
+      "id": 11,
+      "title": "MacBook Air M2",
+      "price": 119990,
+      "description": "13, 256GB, Silve,",
+      "image": "💻",
+      "category": "electronics"
+    }
+  ]
+}
