@@ -4,6 +4,6 @@ export type ProductCardProps = {
   title: string;
   description: string;
   price: number;
-  addCount?: number;
-  onAddClick: () => void;
+  // addCount?: number;
+  // onAddClick: () => void;
 };

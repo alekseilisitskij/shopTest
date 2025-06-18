@@ -1,7 +1,7 @@
-import { CategoryFilter } from "../filters/CategoryFilter";
 import { BasketButton } from "../basket/ui/BasketButton";
 import { SearchInput } from "../search/SearchInput";
-import type { FC } from "react";
+import { type FC } from "react";
+import { Category } from "../../ui/Category/Category";
 
 export const Header: FC = () => {
   return (
@@ -18,7 +18,7 @@ export const Header: FC = () => {
             <BasketButton />
           </div>
         </div>
-        <CategoryFilter />
+        <Category />
       </header>
     </>
   );

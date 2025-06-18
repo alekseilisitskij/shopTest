@@ -1,11 +1,21 @@
-import { useProductBasState } from "../../../hooks/useProductState";
-import { useBasket } from "../hooks/useBasket";
 import type { BasketItem } from "../../../types/basket-types";
-import type { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../slice/BasketSlice";
+
+import type { AppDispatch, RootState } from "../../../store/store";
+import { type FC } from "react";
 
 export const CartModal: FC = () => {
-  const { basketItems } = useProductBasState();
-  const { onClickAdd, onClickRemove } = useBasket();
+  const basketItems = useSelector((state: RootState) => state.basket.items);
+  const dispatch: AppDispatch = useDispatch();
+
+  const onClickAdd = (item: BasketItem) => {
+    dispatch(addItem(item));
+  };
+
+  const onClickRemove = (item: BasketItem) => {
+    dispatch(removeItem(item));
+  };
 
   return (
     <div className="cart-modal">

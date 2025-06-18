@@ -1,10 +1,14 @@
 import ReactPaginate from "react-paginate";
-import { setCurrentPage } from "../catalog/slice/ProductsSlice";
-import { useProductBasState } from "../../hooks/useProductState";
+import { setCurrentPage } from "../catalog/slice/FilterSlice";
 import type { FC } from "react";
+import type { AppDispatch, RootState } from "../../store/store";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Pagination: FC = () => {
-  const { dispatch } = useProductBasState();
+  const currentPage = useSelector(
+    (state: RootState) => state.filterProducts.currentPage
+  );
+  const dispatch: AppDispatch = useDispatch();
 
   const handlePageClick = (event: { selected: number }) => {
     const selectedPage = event.selected + 1;
@@ -18,7 +22,8 @@ export const Pagination: FC = () => {
         nextLabel="Следующая →"
         onPageChange={handlePageClick}
         pageRangeDisplayed={4}
-        marginPagesDisplayed={1}
+        marginPagesDisplayed={2}
+        forcePage={currentPage - 1}
         pageCount={3}
         previousLabel="← Предыдущая"
         containerClassName="pagination"

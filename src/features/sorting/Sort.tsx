@@ -1,9 +1,13 @@
 import type { ChangeEvent, FC } from "react";
-import { setSortProperty } from "../catalog/slice/ProductsSlice";
-import { useProductBasState } from "../../hooks/useProductState";
+import { setSortProperty } from "../catalog/slice/FilterSlice";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "../../store/store";
 
 export const Sort: FC = () => {
-  const { sortProperty, dispatch } = useProductBasState();
+  const sortProperty = useSelector(
+    (state: RootState) => state.filterProducts.sortProperty
+  );
+  const dispatch: AppDispatch = useDispatch();
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const selected = e.target.value;

@@ -1,33 +1,19 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  type PayloadAction,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getAllProducts } from "../../../api/productsApi";
-import type { Product } from "../../../types/product";
 import type {
   PaginatedResponse,
   GetAllProductsParams,
+  Product,
 } from "../../../types/product";
 
 interface IinitialState {
   products: Product[];
   isLoading: "idle" | "loading" | "succeeded" | "failed";
-  searchQuery: string;
-  category: string;
-  currentPage: number;
-  sortProperty: string;
-  showModal: boolean;
 }
 
 const initialState: IinitialState = {
   products: [],
   isLoading: "idle",
-  searchQuery: "",
-  category: "",
-  currentPage: 1,
-  sortProperty: "",
-  showModal: false,
 };
 
 export const fetchProducts = createAsyncThunk<
@@ -41,23 +27,7 @@ export const fetchProducts = createAsyncThunk<
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {
-    setSearchQuery: (state, action: PayloadAction<string>) => {
-      state.searchQuery = action.payload;
-    },
-    setChangeCategory: (state, action: PayloadAction<string>) => {
-      state.category = action.payload;
-    },
-    setCurrentPage: (state, action: PayloadAction<number>) => {
-      state.currentPage = action.payload;
-    },
-    setSortProperty: (state, action: PayloadAction<string>) => {
-      state.sortProperty = action.payload;
-    },
-    setShowModal: (state, action: PayloadAction<boolean>) => {
-      state.showModal = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -76,11 +46,4 @@ const productsSlice = createSlice({
   },
 });
 
-export const {
-  setSearchQuery,
-  setChangeCategory,
-  setCurrentPage,
-  setSortProperty,
-  setShowModal,
-} = productsSlice.actions;
 export default productsSlice.reducer;

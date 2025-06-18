@@ -4,12 +4,16 @@ import type { InitStateBasket, BasketItem } from "../../../types/basket-types";
 const initialState: InitStateBasket = {
   totalPrice: 0,
   items: [],
+  showModal: false,
 };
 
 const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
+    setShowModal: (state, action: PayloadAction<boolean>) => {
+      state.showModal = action.payload;
+    },
     addItem(state, action: PayloadAction<BasketItem>) {
       const findItem = state.items.find((obj) => obj.id === action.payload.id);
       if (findItem) {
@@ -48,5 +52,6 @@ const basketSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, clearItem } = basketSlice.actions;
+export const { addItem, removeItem, clearItem, setShowModal } =
+  basketSlice.actions;
 export default basketSlice.reducer;

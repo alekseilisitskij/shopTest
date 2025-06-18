@@ -7,6 +7,5 @@ export type CategoryList = {
 };
 
 export type CategoryProp = {
-  category: string;
   onClick: (e: MouseEvent<HTMLAnchorElement>) => void;
 };

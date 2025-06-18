@@ -10,4 +10,5 @@ export type BasketItem = {
 export interface InitStateBasket {
   totalPrice: number;
   items: BasketItem[];
+  showModal: boolean;
 }

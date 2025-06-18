@@ -1,7 +1,6 @@
 import { Sort } from "../../features/sorting/Sort";
-import { ProductGrid } from "../../features/catalog/components/ProductGrid";
+import { ProductGrid } from "../../features/catalog/components/ProductGrid/ProductGrid";
 import { Pagination } from "../../features/pagination/Pagination";
-import { SideBarModal } from "../../features/basket/ui/SideBarModal";
 import type { FC } from "react";
 
 export const ProductCatalogLayout: FC = () => {
@@ -13,8 +12,8 @@ export const ProductCatalogLayout: FC = () => {
           <ProductGrid />
           <Pagination />
         </main>
-        <SideBarModal />
       </div>
     </>
   );
 };
+//
