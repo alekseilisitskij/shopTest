@@ -3,7 +3,7 @@ import { setShowModal } from "../slice/BasketSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from "../../../store/store";
-import type { FC } from "react";
+import { useCallback, type FC } from "react";
 
 export const BasketButton: FC = () => {
   const basketItems = useSelector((state: RootState) => state.basket.items);
@@ -15,9 +15,9 @@ export const BasketButton: FC = () => {
     0
   );
 
-  const handleClickSidebar = () => {
+  const handleClickSidebar = useCallback(() => {
     dispatch(setShowModal(!showModal));
-  };
+  }, []);
 
   return (
     <Button

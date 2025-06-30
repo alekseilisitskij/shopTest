@@ -19,7 +19,7 @@ export const CartModal: FC = () => {
 
   return (
     <div className="cart-modal">
-      {basketItems.map(({ id, title, image, count, price }: BasketItem) => (
+      {basketItems.map(({ id, title, image, count, price }) => (
         <div key={id} className="cart-item">
           <div className="cart-item-image">{image}</div>
           <div className="cart-item-info">

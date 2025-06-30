@@ -89,6 +89,22 @@
       "description": "13, 256GB, Silve,",
       "image": "💻",
       "category": "electronics"
+    },
+    {
+      "id": 12,
+      "title": "MacBook Air M2",
+      "price": 119990,
+      "description": "13, 256GB, Silve,",
+      "image": "💻",
+      "category": "electronics"
+    },
+    {
+      "id": 13,
+      "title": "Кроссовки Air Max",
+      "price": 12990,
+      "description": "Nike",
+      "image": "👟",
+      "category": "clothes"
     }
   ]
 }

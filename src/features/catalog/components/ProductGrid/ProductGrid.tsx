@@ -36,7 +36,7 @@ export const ProductGrid: FC = () => {
     );
   }, [dispatch, categoryId, currentPage, sortProperty]);
 
-  const filteredProducts: Product[] = useMemo(() => {
+  const filteredProducts = useMemo(() => {
     return products.filter((product: Product) =>
       product.title.toLowerCase().includes(searchQuery)
     );
@@ -64,7 +64,7 @@ export const ProductGrid: FC = () => {
         <Spinner />
       ) : (
         <div className="products-grid" id="productsGrid">
-          {filteredProducts.map((product: Product) => {
+          {filteredProducts.map((product) => {
             return <ProductCard key={product.id} {...product} />;
           })}
         </div>
