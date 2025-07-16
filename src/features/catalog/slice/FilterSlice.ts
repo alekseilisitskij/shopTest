@@ -3,15 +3,11 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 interface InitialStateFilter {
   searchQuery: string;
   category: string;
-  currentPage: number;
-  sortProperty: string;
 }
 
 const initialState: InitialStateFilter = {
   searchQuery: "",
   category: "all",
-  currentPage: 1,
-  sortProperty: "id",
 };
 
 const filterSlice = createSlice({
@@ -24,19 +20,8 @@ const filterSlice = createSlice({
     setChangeCategory: (state, action: PayloadAction<string>) => {
       state.category = action.payload;
     },
-    setCurrentPage: (state, action: PayloadAction<number>) => {
-      state.currentPage = action.payload;
-    },
-    setSortProperty: (state, action: PayloadAction<string>) => {
-      state.sortProperty = action.payload;
-    },
   },
 });
 
-export const {
-  setSearchQuery,
-  setChangeCategory,
-  setCurrentPage,
-  setSortProperty,
-} = filterSlice.actions;
+export const { setSearchQuery, setChangeCategory } = filterSlice.actions;
 export default filterSlice.reducer;

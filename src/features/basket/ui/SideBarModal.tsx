@@ -1,15 +1,14 @@
 import { createPortal } from "react-dom";
 import { CartModal } from "./CartModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/storeHooks";
 import { clearItem, setShowModal } from "../slice/BasketSlice";
 
-import type { AppDispatch, RootState } from "../../../store/store";
 import { type FC } from "react";
 
 export const SideBarModal: FC = () => {
-  const totalPrice = useSelector((state: RootState) => state.basket.totalPrice);
-  const showModal = useSelector((state: RootState) => state.basket.showModal);
-  const dispatch: AppDispatch = useDispatch();
+  const totalPrice = useAppSelector((state) => state.basket.totalPrice);
+  const showModal = useAppSelector((state) => state.basket.showModal);
+  const dispatch = useAppDispatch();
 
   const handleClickSidebar = () => {
     dispatch(setShowModal(!showModal));

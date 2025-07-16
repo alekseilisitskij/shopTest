@@ -1,16 +1,14 @@
 import { memo } from "react";
 import type { ProductCardProps } from "./types";
 import { addItem } from "../../../basket/slice/BasketSlice";
-import type { AppDispatch, RootState } from "../../../../store/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/storeHooks";
 
 export const ProductCard = memo(
   ({ id, image, title, description, price }: ProductCardProps) => {
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
-    const addCount = useSelector(
-      (state: RootState) =>
-        state.basket.items.find((obj) => obj.id === id)?.count || 0
+    const addCount = useAppSelector(
+      (state) => state.basket.items.find((obj) => obj.id === id)?.count || 0
     );
 
     const onClickAdd = () => {

@@ -2,11 +2,10 @@ import debounce from "lodash.debounce";
 import { useCallback, type ChangeEvent } from "react";
 import { setSearchQuery } from "../catalog/slice/FilterSlice";
 import { Input } from "../../ui/Input/Input";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../store/store";
+import { useAppDispatch } from "../../hooks/storeHooks";
 
 export const SearchInput = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSearch = useCallback(
     debounce((value: string) => {

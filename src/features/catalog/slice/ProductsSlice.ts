@@ -1,3 +1,4 @@
+import type { AxiosResponse } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getAllProducts } from "../../../api/productsApi";
 import type {
@@ -9,19 +10,21 @@ import type {
 interface IinitialState {
   products: Product[];
   isLoading: "idle" | "loading" | "succeeded" | "failed";
+  totalCount: number | undefined;
 }
 
 const initialState: IinitialState = {
   products: [],
   isLoading: "idle",
+  totalCount: 0,
 };
 
 export const fetchProducts = createAsyncThunk<
-  PaginatedResponse,
+  AxiosResponse<PaginatedResponse>,
   GetAllProductsParams
 >("products/fetchProducts", async ({ category, page, limit = 4, sort }) => {
   const response = await getAllProducts({ category, page, limit, sort });
-  return response.data;
+  return response;
 });
 
 const productsSlice = createSlice({
@@ -35,7 +38,8 @@ const productsSlice = createSlice({
         state.products = [];
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.products = action.payload.data;
+        state.products = action.payload.data.data;
+        state.totalCount = action.payload.data.items;
         state.isLoading = "succeeded";
       })
       .addCase(fetchProducts.rejected, (state) => {

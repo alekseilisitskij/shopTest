@@ -2,39 +2,32 @@ import { useEffect, useMemo, type FC } from "react";
 import { fetchProducts } from "../../slice/ProductsSlice";
 import { ProductCard } from "../ProductCart/ProductCard";
 import { Spinner } from "../../../../ui/Spinner/Spinner";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/storeHooks";
 import { useParams } from "react-router-dom";
-import { useSortPageUrlSync } from "../../hooks/useSortPageUrlSync";
+import { useSortAndPage } from "../../hooks/useSortAndPage";
 
-import type { RootState, AppDispatch } from "../../../../store/store";
 import type { Product } from "../../../../types/product";
 
 export const ProductGrid: FC = () => {
-  const products = useSelector((state: RootState) => state.products.products);
-  const isLoading = useSelector((state: RootState) => state.products.isLoading);
-  const searchQuery = useSelector(
-    (state: RootState) => state.filterProducts.searchQuery
-  );
-  const currentPage = useSelector(
-    (state: RootState) => state.filterProducts.currentPage
-  );
-  const sortProperty = useSelector(
-    (state: RootState) => state.filterProducts.sortProperty
+  const products = useAppSelector((state) => state.products.products);
+  const isLoading = useAppSelector((state) => state.products.isLoading);
+  const searchQuery = useAppSelector(
+    (state) => state.filterProducts.searchQuery
   );
 
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { categoryId } = useParams();
+  const { sort, page } = useSortAndPage();
 
-  useSortPageUrlSync();
   useEffect(() => {
     dispatch(
       fetchProducts({
         category: categoryId === "all" ? "" : categoryId,
-        page: currentPage,
-        sort: sortProperty,
+        page: page,
+        sort: sort,
       })
     );
-  }, [dispatch, categoryId, currentPage, sortProperty]);
+  }, [dispatch, categoryId, sort, page]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product: Product) =>

@@ -105,6 +105,14 @@
       "description": "Nike",
       "image": "👟",
       "category": "clothes"
+    },
+    {
+      "id": 14,
+      "title": "Куртка зимняя",
+      "price": 7326,
+      "description": "The North Face",
+      "image": "🧥",
+      "category": "clothes"
     }
   ]
 }

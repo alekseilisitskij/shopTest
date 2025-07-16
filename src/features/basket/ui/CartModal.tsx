@@ -1,13 +1,12 @@
-import type { BasketItem } from "../../../types/basket-types";
-import { useDispatch, useSelector } from "react-redux";
+import type { BasketItem } from "../../../types/product";
+import { useAppDispatch, useAppSelector } from "../../../hooks/storeHooks";
 import { addItem, removeItem } from "../slice/BasketSlice";
 
-import type { AppDispatch, RootState } from "../../../store/store";
 import { type FC } from "react";
 
 export const CartModal: FC = () => {
-  const basketItems = useSelector((state: RootState) => state.basket.items);
-  const dispatch: AppDispatch = useDispatch();
+  const basketItems = useAppSelector((state) => state.basket.items);
+  const dispatch = useAppDispatch();
 
   const onClickAdd = (item: BasketItem) => {
     dispatch(addItem(item));
